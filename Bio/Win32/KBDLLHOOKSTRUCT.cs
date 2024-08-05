@@ -10,4 +10,9 @@ public struct KBDLLHOOKSTRUCT
     public KBDLLHOOKSTRUCTF flags;
     public uint time;
     public UIntPtr dwExtraInfo;
+
+    public override string ToString()
+    {
+        return $"VK: {vkCode} SC:{scanCode} FLAGS:{flags}";
+    }
 }

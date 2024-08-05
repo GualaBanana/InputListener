@@ -26,37 +26,37 @@ using Bio.Win32;
 namespace Bio;
 
 /// <summary>
-/// The managed wrapper for a low-level keyboard input message.
+/// The managed wrapper for a low-level mouse input message.
 /// </summary>
-public class KeyboardInputMessage
+public class MouseInputMessage
 {
     /// <summary>
-    /// The indentifier of the keyboard message specifying the system action.
+    /// The identifier of the mouse message specifying the system action.
     /// </summary>
     public WM WM;
     /// <summary>
-    /// The structure containing the keyboard input data.
+    /// The structure containing the mouse input data.
     /// </summary>
-    public KBDLLHOOKSTRUCT KBDLLHOOKSTRUCT;
+    public MSLLHOOKSTRUCT MSLLHOOKSTRUCT;
 
     /// <summary>
-    /// Instantiates the wrapper for a low-level keyboard input message.
+    /// Instantiates the wrapper for a low-level mouse input message.
     /// </summary>
     /// <param name="WM"><inheritdoc cref="WM"/></param>
-    /// <param name="KBDLLHOOKSTRUCT"><inheritdoc cref="KBDLLHOOKSTRUCT"/></param>
-    public KeyboardInputMessage(IntPtr WM, IntPtr KBDLLHOOKSTRUCT) 
-        : this((WM)WM, Marshal.PtrToStructure<KBDLLHOOKSTRUCT>(KBDLLHOOKSTRUCT))
+    /// <param name="MSLLHOOKSTRUCT"><inheritdoc cref="MSLLHOOKSTRUCT"/></param>
+    public MouseInputMessage(IntPtr WM, IntPtr MSLLHOOKSTRUCT) 
+        : this((WM)WM, Marshal.PtrToStructure<MSLLHOOKSTRUCT>(MSLLHOOKSTRUCT))
     {
     }
 
-    KeyboardInputMessage(WM WM, KBDLLHOOKSTRUCT KBDLLHOOKSTRUCT)
+    MouseInputMessage(WM WM, MSLLHOOKSTRUCT MSLLHOOKSTRUCT)
     {
         this.WM = WM;
-        this.KBDLLHOOKSTRUCT = KBDLLHOOKSTRUCT;
+        this.MSLLHOOKSTRUCT = MSLLHOOKSTRUCT;
     }
 
     public override string ToString()
     {
-        return $"WM: {WM} {KBDLLHOOKSTRUCT}";
+        return $"\r\nWM: {WM} {MSLLHOOKSTRUCT.ToString(WM)}";
     }
 }
